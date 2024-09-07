@@ -8,14 +8,14 @@ import Axios from 'axios';
 const App = () => {
   const [data, setData] = useState();
 
-  const getData = async() => {
-    const response = await Axios.get('http://localhost:3000/getData');
-    setData(response.data);
-  }
+  // const getData = async() => {
+  //   const response = await Axios.get('http://localhost:3000/api/users');
+  //   setData(response.data);
+  // }
 
-  useEffect(() => {
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   return (
     <Router>
