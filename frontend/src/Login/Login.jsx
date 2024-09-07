@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"; // Import icons from react-icons
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+
+  //   handle submit for form
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">
@@ -51,6 +57,7 @@ const Login = () => {
             </button>
           </div>
           <button
+            onClick={handleSubmit}
             type="submit"
             className="w-full px-4 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800"
           >
@@ -59,9 +66,9 @@ const Login = () => {
         </form>
         <p className="mt-6 text-center text-sm text-gray-500">
           Don't have an account?{" "}
-          <a href="#" className="text-gray-900 hover:underline">
+          <Link to={"/signup"} className="text-gray-900 hover:underline">
             Sign up
-          </a>
+          </Link>
         </p>
       </div>
     </div>
