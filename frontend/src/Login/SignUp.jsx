@@ -47,16 +47,14 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white">
-      <div className="w-full max-w-md p-6 bg-white shadow-lg rounded-lg border border-gray-200">
-        <h2 className="text-3xl font-bold mb-4 text-center text-gray-900">
-          Sign Up
+    <div className="flex items-center justify-center min-h-screen   bg-gray-100">
+      <div className="w-full max-w-3xl p-6 bg-white shadow-lg rounded-lg border border-gray-200">
+        <h2 className="text-3xl font-bold mb-3 text-center text-gray-900">
+          Create Your Account
         </h2>
-        <hr className="p-3" />
+        <hr className="mb-6" />
         <form onSubmit={handleSubmit}>
-          {/* First Name and Last Name in the Same Row */}
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            {/* First Name */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <div>
               <label
                 htmlFor="firstname"
@@ -75,7 +73,6 @@ const SignUp = () => {
               />
             </div>
 
-            {/* Last Name */}
             <div>
               <label
                 htmlFor="lastname"
@@ -93,48 +90,7 @@ const SignUp = () => {
                 required
               />
             </div>
-          </div>
 
-          {/* Address */}
-          <div className="mb-4">
-            <label
-              htmlFor="address"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
-              Address
-            </label>
-            <input
-              type="text"
-              id="address"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-900"
-              placeholder="Enter your address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              required
-            />
-          </div>
-          {/* Country and Role in the Same Row */}
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            {/* Country */}
-            <div>
-              <label
-                htmlFor="country"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
-                Country
-              </label>
-              <input
-                type="text"
-                id="country"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-900"
-                placeholder="Country"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                required
-              />
-            </div>
-
-            {/* Role */}
             <div>
               <label
                 htmlFor="role"
@@ -155,47 +111,84 @@ const SignUp = () => {
             </div>
           </div>
 
-          {/* Number */}
-          <div className="mb-4">
-            <label
-              htmlFor="number"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              id="number"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-900"
-              placeholder="Enter your phone number"
-              value={number}
-              onChange={(e) => setNumber(e.target.value)}
-              required
-            />
-          </div>
-
           {/* Email */}
           <div className="mb-6">
             <label
               htmlFor="email"
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              Email
+              Email Address
             </label>
             <input
               type="email"
               id="email"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-900"
-              placeholder="Enter your email"
+              placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
 
-          {/* Password and Confirm Password in the Same Row */}
-          <div className="grid grid-cols-2 gap-4 mb-8">
-            {/* Password */}
+          {/* Address, Country, Phone in 3 Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div>
+              <label
+                htmlFor="address"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Address
+              </label>
+              <input
+                type="text"
+                id="address"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-900"
+                placeholder="Your address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                required
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="country"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Country
+              </label>
+              <input
+                type="text"
+                id="country"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-900"
+                placeholder="Country"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                required
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="number"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="number"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-900"
+                placeholder="123-456-7890"
+                value={number}
+                onChange={(e) => setNumber(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+
+          {/* Password and Confirm Password */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             <div className="relative">
               <label
                 htmlFor="password"
@@ -209,7 +202,7 @@ const SignUp = () => {
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-900 pr-10"
                 placeholder="Enter your password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)} // Update state
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
               <button
@@ -225,7 +218,6 @@ const SignUp = () => {
               </button>
             </div>
 
-            {/* Confirm Password */}
             <div className="relative">
               <label
                 htmlFor="confirmPassword"
@@ -256,29 +248,31 @@ const SignUp = () => {
             </div>
           </div>
 
-
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full px-4 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800"
-            >
+            className="w-full py-3 px-6 font-semibold text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-300"
+          >
             Sign Up
           </button>
         </form>
-            {/* Display Response Message */}
-            {response && (
-              <div
-                className={`my-6 text-center text-md font-bold ${
-                  response.success ? "text-black" : "text-red-500"
-                }`}
-              >
-                {response.message} !!!
-              </div>
-            )}
-        <p className="mt-6 text-center text-sm text-gray-500">
+
+        {response && (
+          <div className="mt-6 p-4 bg-gray-50 border rounded-md">
+            <p
+              className={`text-sm ${
+                response.success ? "text-green-500" : "text-red-500"
+              }`}
+            >
+              {response.message}
+            </p>
+          </div>
+        )}
+
+        <p className="mt-6 text-sm text-gray-500">
           Already have an account?{" "}
-          <Link to={"/"} className="text-gray-900 hover:underline">
-            Log in
+          <Link to="/" className="text-gray-900 font-medium">
+            Log In
           </Link>
         </p>
       </div>
