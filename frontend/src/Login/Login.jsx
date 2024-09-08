@@ -33,6 +33,7 @@ const Login = () => {
         <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">
           Login
         </h2>
+        <hr className="p-3" />
         <form onSubmit={handleSubmit}> {/* Use onSubmit to handle form submission */}
           <div className="mb-6">
             <label
@@ -90,7 +91,7 @@ const Login = () => {
         {/* Display Response Message */}
         {response && (
           
-          <div className={`mt-6 text-center text-md font-bold ${response.success ? 'text-black' : 'text-red-500'}`}>
+          <div className={`my-6 text-center text-md font-bold ${response.success ? 'text-black' : 'text-red-500'}`}>
             {response.message} !!!
           </div>
         )}
