@@ -18,7 +18,7 @@ const pool = mysql.createPool({
 // Promisify for Node.js async/await
 const promisePool = pool.promise();
 
-// Sample API endpoint
+// Login Validation
 app.post("/login/check", async (req, res) => {
   const { email, password } = req.body;
 
@@ -39,6 +39,23 @@ app.post("/login/check", async (req, res) => {
   }
 });
 
+// Fake data fetch
+app.post("/posts", async (req, res) => {
+  try {
+    const [rows] = await promisePool.query("SELECT * FROM mock_data");
+
+    if (rows.length > 0) {
+      res.json({ success: true, message: "Data Fetched", data: rows });
+    } else {
+      res.status(401).json({ success: false, message: "There is no data" });
+    }
+  } catch (error) {
+    console.log("Error quering the database:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Signup
 app.post("/signup/create", async (req, res) => {
   const {
     firstname,
@@ -50,25 +67,29 @@ app.post("/signup/create", async (req, res) => {
     email,
     password,
   } = req.body;
-  
+
   try {
-  const [result] = await promisePool.query(
-    "INSERT INTO users (firstname, lastname, role, address, country, phone_number, email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-    [firstname, lastname, role, address, country, number, email, password]
-  );
-  
-     // Check if the query was successful
-     if (result.affectedRows > 0) {
+    const [result] = await promisePool.query(
+      "INSERT INTO users (firstname, lastname, role, address, country, phone_number, email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      [firstname, lastname, role, address, country, number, email, password]
+    );
+
+    // Check if the query was successful
+    if (result.affectedRows > 0) {
       // If successful, send a success response
-      res.status(201).json({ success: true, message: 'User created successfully' });
+      res
+        .status(201)
+        .json({ success: true, message: "User created successfully" });
     } else {
       // If not successful, send a failure response
-      res.status(400).json({ success: false, message: 'Failed to create user' });
+      res
+        .status(400)
+        .json({ success: false, message: "Failed to create user" });
     }
   } catch (error) {
-    console.error('Error executing query', error);
+    console.error("Error executing query", error);
     // Send a server error response
-    res.status(500).json({ success: false, message: 'Server error' });
+    res.status(500).json({ success: false, message: "Server error" });
   }
 });
 
