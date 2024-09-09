@@ -5,6 +5,7 @@ import SignUp from "./Login/SignUp";
 import Dashboard from "./Dashboard/Dashboard";
 
 const App = () => {
+  // useState
   const [data, setData] = useState();
 
   return (
