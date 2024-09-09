@@ -5,6 +5,7 @@ import SignUp from "./Login/SignUp";
 import Home from "./Login/Home";
 
 const App = () => {
+  // useState
   const [data, setData] = useState();
 
   return (
