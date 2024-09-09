@@ -1,123 +1,48 @@
-import React, { useState } from "react";
-import {
-  AiOutlineDashboard,
-  AiOutlineUser,
-  AiOutlineFileText,
-  AiOutlineSetting,
-  AiOutlineLogout,
-} from "react-icons/ai";
-import { BsBriefcase, BsFillCalendarCheckFill } from "react-icons/bs";
-import { HiOutlineChat } from "react-icons/hi";
+import Navbar from "../Navbar/Navbar";
+import SkillCard from "../Components/Card";
+import { AiOutlineSearch } from "react-icons/ai";
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState("dashboard");
-
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      <aside className="w-64 bg-white shadow-lg border-r border-gray-200">
-        <div className="p-6">
-          <h1 className="text-2xl font-bold text-gray-900 mb-6">Workera</h1>
-          <nav>
-            <ul className="space-y-2">
-              <li>
-                <SidebarButton
-                  label="Dashboard"
-                  icon={AiOutlineDashboard}
-                  isActive={activeTab === "dashboard"}
-                  onClick={() => setActiveTab("dashboard")}
-                />
-              </li>
-              <li>
-                <SidebarButton
-                  label="Profile"
-                  icon={AiOutlineUser}
-                  isActive={activeTab === "profile"}
-                  onClick={() => setActiveTab("profile")}
-                />
-              </li>
-              <li>
-                <SidebarButton
-                  label="Jobs"
-                  icon={BsBriefcase}
-                  isActive={activeTab === "jobs"}
-                  onClick={() => setActiveTab("jobs")}
-                />
-              </li>
-              <li>
-                <SidebarButton
-                  label="Messages"
-                  icon={HiOutlineChat}
-                  isActive={activeTab === "messages"}
-                  onClick={() => setActiveTab("messages")}
-                />
-              </li>
-              <li>
-                <SidebarButton
-                  label="Calendar"
-                  icon={BsFillCalendarCheckFill}
-                  isActive={activeTab === "calendar"}
-                  onClick={() => setActiveTab("calendar")}
-                />
-              </li>
-              <li>
-                <SidebarButton
-                  label="Reports"
-                  icon={AiOutlineFileText}
-                  isActive={activeTab === "reports"}
-                  onClick={() => setActiveTab("reports")}
-                />
-              </li>
-              <li>
-                <SidebarButton
-                  label="Settings"
-                  icon={AiOutlineSetting}
-                  isActive={activeTab === "settings"}
-                  onClick={() => setActiveTab("settings")}
-                />
-              </li>
-              <li>
-                <SidebarButton
-                  label="Logout"
-                  icon={AiOutlineLogout}
-                  isActive={activeTab === "logout"}
-                  onClick={() => setActiveTab("logout")}
-                />
-              </li>
-            </ul>
-          </nav>
+    <>
+      <Navbar />
+      <div className="grid items-center pt-[60px]">
+        <div className="bg-emerald-800  p-8 flex items-center justify-center">
+          <div className="max-w-4x mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-8">
+              Find the right <span className="text-emerald-300">freelance</span>
+              <br />
+              service, right away
+            </h1>
+            <div className="relative mb-16">
+              <input
+                type="text"
+                placeholder="Search for any service..."
+                className="w-full py-3 px-4 pr-12 rounded-full text-lg"
+              />
+              <button className="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-800">
+                <AiOutlineSearch className="w-6 h-6" />
+              </button>
+            </div>
+            <div className="text-white">
+              <p className="mb-4 text-sm opacity-80">Trusted by:</p>
+              <div className="flex flex-wrap justify-center gap-4 md:gap-8">
+                {["Meta", "Google", "NETFLIX", "P&G", "PayPal", "Payoneer"].map(
+                  (company) => (
+                    <span key={company} className="text-sm font-semibold">
+                      {company}
+                    </span>
+                  )
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-      </aside>
-
-      <main className="flex-1 p-6">
-        <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Welcome to your Dashboard
-          </h2>
-          {activeTab === "dashboard" && <div>Dashboard Content</div>}
-          {activeTab === "profile" && <div>Profile Content</div>}
-          {activeTab === "jobs" && <div>Jobs Content</div>}
-          {activeTab === "messages" && <div>Messages Content</div>}
-          {activeTab === "calendar" && <div>Calendar Content</div>}
-          {activeTab === "reports" && <div>Reports Content</div>}
-          {activeTab === "settings" && <div>Settings Content</div>}
-          {activeTab === "logout" && <div>Logout Content</div>}
+        <div className="pt-[70px]">
+          <SkillCard />
         </div>
-      </main>
-    </div>
-  );
-};
-
-const SidebarButton = ({ label, icon: Icon, isActive, onClick }) => {
-  return (
-    <button
-      onClick={onClick}
-      className={`flex items-center w-full p-3 text-gray-700 hover:bg-gray-100 rounded-lg ${
-        isActive ? "bg-gray-100 font-semibold" : ""
-      }`}
-    >
-      <Icon className="h-6 w-6 mr-3" />
-      {label}
-    </button>
+      </div>
+    </>
   );
 };
 
