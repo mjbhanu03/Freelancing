@@ -42,7 +42,7 @@ app.post("/login/check", async (req, res) => {
 // Fake data fetch
 app.post("/posts", async (req, res) => {
   try {
-    const [rows] = await promisePool.query("SELECT * FROM mock_data");
+    const [rows] = await promisePool.query("SELECT * FROM mock_data WHERE language = 'Italian'");
 
     if (rows.length > 0) {
       res.json({ success: true, message: "Data Fetched", data: rows });
